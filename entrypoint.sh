@@ -8,6 +8,11 @@ echo "ACTOR: $GITHUB_ACTOR"
 remote_repo="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 remote_branch=${GH_PAGES_BRANCH:=gh-pages}
 
+if [ -n "$USER_DEFINED_INIT_SCRIPT" ]; then
+    echo 'Running your custom init shell script 🏃 '
+    $USER_DEFINED_INIT_SCRIPT
+fi
+
 echo 'Installing Python Requirements 🐍 '
 pip install -r requirements.txt
 
